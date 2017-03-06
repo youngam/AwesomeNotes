@@ -1,0 +1,3 @@
+[submodule "worklibrary"]
+	path = worklibrary
+	url = https://youngam@bitbucket.org/youngam/worklibrary.git
