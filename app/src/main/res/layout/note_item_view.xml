@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:padding="@dimen/small"
+              style="@style/WrapContent">
+
+    <TextView
+        android:id="@+id/note_title_text_view"
+        android:textSize="18sp"
+        style="@style/WrapContent"/>
+</LinearLayout>

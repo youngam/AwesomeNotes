@@ -1,0 +1,46 @@
+{
+	"ok": {
+		"notes": [
+			{
+				"_id": "58bc647e1061fd0a582f882b",
+				"modificationTime": "2017-03-05T19:18:22.213Z",
+				"creationTime": "2017-03-05T19:18:22.213Z",
+				"title": "my first note",
+				"content": "on ubuntu",
+				"colorName": "white",
+				"profileId": "58bc64431061fd0a582f882a",
+				"isInTrash": false,
+				"isArchived": false,
+				"labels": [],
+				"listItemsIds": []
+			},
+			{
+				"_id": "58bc64851061fd0a582f882c",
+				"modificationTime": "2017-03-05T19:18:29.317Z",
+				"creationTime": "2017-03-05T19:18:29.317Z",
+				"title": "dsfadsf",
+				"content": "dsfasfasdf",
+				"colorName": "white",
+				"profileId": "58bc64431061fd0a582f882a",
+				"isInTrash": false,
+				"isArchived": false,
+				"labels": [],
+				"listItemsIds": []
+			},
+			{
+				"_id": "58bc648e1061fd0a582f882e",
+				"modificationTime": "2017-03-05T19:18:38.197Z",
+				"creationTime": "2017-03-05T19:18:38.197Z",
+				"title": "dsfadsfsda",
+				"content": "dsfasdfasdf",
+				"colorName": "white",
+				"profileId": "58bc64431061fd0a582f882a",
+				"isInTrash": false,
+				"isArchived": false,
+				"labels": [],
+				"listItemsIds": []
+			}
+		],
+		"numItems": 3
+	}
+}
