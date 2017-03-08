@@ -2,14 +2,18 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               style="@style/MatchParent">
+    <include layout="@layout/toolbar_layout"
+             style="@style/FullWidth"/>
 
     <EditText
         android:id="@+id/title_edit_text"
-        style="@style/WrapContent"/>
+        android:hint="@string/title"
+        style="@style/InputEditText"/>
 
     <EditText
         android:id="@+id/content_edit_text"
         android:layout_marginTop="@dimen/big"
-        style="@style/WrapContent"/>
+        android:hint="@string/note"
+        style="@style/InputEditText"/>
 
 </LinearLayout>

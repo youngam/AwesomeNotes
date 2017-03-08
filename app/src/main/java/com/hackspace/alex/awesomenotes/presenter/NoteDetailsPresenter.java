@@ -7,12 +7,14 @@ import com.hackspace.alex.awesomenotes.entity.Note;
 import com.hackspace.alex.awesomenotes.model.NotesModel;
 import com.hackspace.alex.awesomenotes.utils.INoteDetailsView;
 
+import io.reactivex.SingleObserver;
 import io.reactivex.observers.DisposableSingleObserver;
 
 public class NoteDetailsPresenter {
     private INoteDetailsView mNotesView;
-
-    @Inject NotesModel mNotesModel;
+    private String mNoteId;
+    @Inject
+    NotesModel mNotesModel;
 
     public NoteDetailsPresenter(INoteDetailsView notesView) {
         mNotesView = notesView;
@@ -20,10 +22,11 @@ public class NoteDetailsPresenter {
     }
 
     public void onInitView(String noteId) {
-        //TODO add reference to AuthModel.currentUserId
-        if(noteId != null) {
+        if (noteId != null) {
+            mNoteId = noteId;
+            //TODO add reference to AuthModel.currentUserId
             Long profileId = 1L;
-            mNotesModel.readNote(noteId,profileId).subscribe(new DisposableSingleObserver<Note>() {
+            mNotesModel.readNote(noteId, profileId).subscribe(new DisposableSingleObserver<Note>() {
                 @Override
                 public void onSuccess(Note value) {
                     mNotesView.displayNote(value);
@@ -36,4 +39,39 @@ public class NoteDetailsPresenter {
             });
         }
     }
+
+    public void onBackButtonPressed(String title, String content) {
+        if(mNoteId != null) updateNote(mNoteId, title, content);
+        else {
+            createNote(title, content);
+        }
+    }
+
+    private void createNote(String title, String content) {
+        //TODO add reference to AuthModel.currentUserId
+        Long profileId = 1L;
+        mNotesModel.createNote(profileId, title, content)
+                .subscribe(getNavigateObserver());
+    }
+
+    private void updateNote(String noteId, String title, String content) {
+        mNotesModel.updateNote(noteId, title, content)
+                .subscribe(getNavigateObserver());
+    }
+
+    private SingleObserver<Note> getNavigateObserver() {
+        return new DisposableSingleObserver<Note>() {
+            @Override
+            public void onSuccess(Note value) {
+                mNotesView.navigateToNotesScreen();
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                throw new RuntimeException(e);
+            }
+        };
+    }
+
+
 }

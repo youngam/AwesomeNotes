@@ -12,6 +12,7 @@ public class JsonResponseParser {
     private Gson mGson = new Gson();
     private JsonElement mJsonToParse;
     public static final String OK_PATH = "ok";
+    public static final String FILTER = "filter";
     public static final String ERROR_PATH = "ok";
 
     public JsonResponseParser(JsonElement json) {

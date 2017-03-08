@@ -1,11 +1,14 @@
 package com.hackspace.alex.awesomenotes.model;
 
+import static com.hackspace.alex.awesomenotes.entity.Entity.ID;
+import static com.hackspace.alex.awesomenotes.net.JsonResponseParser.FILTER;
 import static com.hackspace.alex.awesomenotes.net.RxEntityConverter.convertToCollection;
 import static com.hackspace.alex.awesomenotes.net.RxEntityConverter.convertToSingeEntity;
 import static com.hackspace.alex.worklibrary.utils.StringUtils.inputStreamToString;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Arrays;
 import java.util.Collection;
 
 import com.google.gson.JsonElement;
@@ -14,6 +17,7 @@ import com.google.gson.internal.bind.TypeAdapters;
 import com.hackspace.alex.awesomenotes.AwesomeNotes;
 import com.hackspace.alex.awesomenotes.entity.Note;
 import com.hackspace.alex.awesomenotes.entity.Profile;
+import com.hackspace.alex.worklibrary.utils.GsonUtils;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 
 import io.reactivex.Observable;
@@ -69,6 +73,47 @@ public class NotesModel {
         return wrapAsync(convertToSingeEntity(response, Note.class, Note.NOTE))
                 .singleOrError();
     }
+
+    public Single<Note> createNote(Long profileId, String title, String content) {
+        JsonObject noteJson = new JsonObject();
+        noteJson.addProperty(Note.TITLE, title);
+        noteJson.addProperty(Note.CONTENT, content);
+        noteJson.addProperty(Profile.PROFILE_ID, profileId);
+
+        JsonObject request = GsonUtils.newJsonObject(Note.NOTE, noteJson);
+        String method = ServerApiMethod.CREATE_NOTE.getMethodName();
+        Observable<JsonElement> response = shouldUseTestResponses? getTestResponse(method ,request) :
+                NOTES_API.createNote(request);
+        return wrapAsync(convertToSingeEntity(response, Note.class, Note.NOTE))
+                .singleOrError();
+    }
+
+    public Single<Note> updateNote(String noteId, String title, String content) {
+        JsonObject noteJson = new JsonObject();
+        noteJson.addProperty(Note.TITLE, title);
+        noteJson.addProperty(Note.CONTENT, content);
+        JsonObject filter = GsonUtils.newJsonObject(ID, noteId);
+
+        JsonObject request = new JsonObject();
+        request.add(Note.NOTE, noteJson);
+        request.add(FILTER, filter);
+
+        String method = ServerApiMethod.UPDATE_NOTE.getMethodName();
+        Observable<JsonElement> response = shouldUseTestResponses? getTestResponse(method ,request) :
+                NOTES_API.updateNote(request);
+        return wrapAsync(convertToSingeEntity(response, Note.class, Note.NOTE))
+                .singleOrError();
+    }
+
+    public Single<Note> deleteNote(String id) {
+        JsonObject request = GsonUtils.newJsonObject(Arrays.asList(Note.NOTE, FILTER, ID), id);
+        String method = ServerApiMethod.DELETE_NOTE.getMethodName();
+        Observable<JsonElement> response = shouldUseTestResponses? getTestResponse(method ,request) :
+                NOTES_API.deleteNote(request);
+        return wrapAsync(convertToSingeEntity(response, Note.class, Note.NOTE))
+                .singleOrError();
+    }
+
 
     private <T> Observable<T> wrapAsync(Observable<T> observable) {
         return observable.subscribeOn(Schedulers.io())

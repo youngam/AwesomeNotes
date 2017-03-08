@@ -7,5 +7,6 @@
     <TextView
         android:id="@+id/note_title_text_view"
         android:textSize="18sp"
+        android:textColor="@color/black"
         style="@style/WrapContent"/>
 </LinearLayout>

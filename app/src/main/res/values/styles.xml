@@ -1,11 +1,39 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="theme">@style/ThemeOverlay.AppCompat.Dark</item>
+    </style>
+
+    <style name="InputEditText" parent="FullWidth">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textColorHint">@color/gray_dim</item>
+        <item name="android:gravity">start</item>
+        <item name="android:padding">@dimen/small</item>
+    </style>
+
+    <style name="SideMenuElement" parent="FullWidth">
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:clickable">true</item>
+        <item name="android:background">@drawable/gray_side_menu_item_gfx</item>
+        <item name="android:layout_marginBottom">@dimen/tiny</item>
+        <item name="android:paddingStart">@dimen/normal</item>
+        <item name="android:paddingEnd">@dimen/normal</item>
+        <item name="text1Size">24sp</item>
+        <item name="android:minHeight">@dimen/big</item>
+        <item name="text1Gravity">center</item>
+        <item name="text1MinWidth">@dimen/middle</item>
+        <item name="text2Size">18sp</item>
+        <item name="text1TypeFace">ionicons</item>
+        <item name="text2TypeFace">roboto_regular</item>
+        <item name="text2MarginLeft">@dimen/normal</item>
+        <item name="text2Color">@color/black</item>
+        <item name="text1Color">@color/gray_dim</item>
     </style>
 
 </resources>
