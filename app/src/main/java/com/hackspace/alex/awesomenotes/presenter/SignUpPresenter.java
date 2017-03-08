@@ -20,9 +20,10 @@ public class SignUpPresenter {
         AwesomeNotes.getComponent().inject(this);
     }
 
-    public void onSignInClick(String email, String pass) {
+    public void onSignUpClick(String firstName, String lastName,
+                              String email, String pass) {
         String md5Pass = PassEncoder.getMd5(pass);
-        mNotesModel.signInUser(email, md5Pass)
+        mNotesModel.signUpUser(firstName, lastName, email, md5Pass)
                 .subscribe(new DisposableSingleObserver<Profile>() {
                     @Override
                     public void onSuccess(Profile value) {

@@ -22,7 +22,6 @@ import com.hackspace.alex.awesomenotes.ui.ItemTouchHelperListener;
 import com.hackspace.alex.awesomenotes.ui.OnStartDragListener;
 import com.hackspace.alex.awesomenotes.ui.SimpleItemTouchHelperCallback;
 import com.hackspace.alex.awesomenotes.view.INotesView;
-import com.hackspace.alex.worklibrary.ui.helper.DividerItemDecoration;
 import com.hackspace.alex.worklibrary.ui.listener.OnItemClickListener;
 
 import butterknife.BindView;
@@ -101,8 +100,6 @@ public class NotesActivity extends SideMenuActivity implements INotesView, OnSta
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(NotesActivity.this);
         mNotesRecyclerView.setLayoutManager(layoutManager);
-        mNotesRecyclerView.addItemDecoration(new DividerItemDecoration(NotesActivity.this, R.drawable.divider_thin));
-
         ItemTouchHelper.Callback callback = new SimpleItemTouchHelperCallback(this);
         mItemTouchHelper = new ItemTouchHelper(callback);
         mItemTouchHelper.attachToRecyclerView(mNotesRecyclerView);

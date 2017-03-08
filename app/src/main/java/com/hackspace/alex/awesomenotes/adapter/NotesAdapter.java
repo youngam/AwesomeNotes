@@ -54,8 +54,8 @@ public class NotesAdapter extends BaseRecyclerAdapter<Note,NotesAdapter.NoteView
     }
 
     class NoteViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        @BindView(R.id.note_title_text_view)
-        TextView mNoteTitleTextView;
+        @BindView(R.id.note_title_text_view) TextView mNoteTitleTextView;
+        @BindView(R.id.note_content_text_view) TextView mContentTitleTextView;
 
         NoteViewHolder(View itemView) {
             super(itemView);
@@ -65,6 +65,7 @@ public class NotesAdapter extends BaseRecyclerAdapter<Note,NotesAdapter.NoteView
 
         void setContent(Note note) {
             mNoteTitleTextView.setText(note.getTitle());
+            mContentTitleTextView.setText(note.getContent());
         }
 
         @Override

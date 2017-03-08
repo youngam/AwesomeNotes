@@ -1,19 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              style="@style/MatchParent"
               android:orientation="vertical"
-              style="@style/MatchParent">
-    <include layout="@layout/toolbar_layout"
-             style="@style/FullWidth"/>
+              tools:ignore="MissingPrefix">
 
-    <EditText
-        android:id="@+id/title_edit_text"
-        android:hint="@string/title"
-        style="@style/InputEditText"/>
+    <include style="@style/FullWidth"
+             layout="@layout/toolbar_layout"/>
 
-    <EditText
-        android:id="@+id/content_edit_text"
-        android:layout_marginTop="@dimen/big"
-        android:hint="@string/note"
-        style="@style/InputEditText"/>
+    <LinearLayout
+        style="@style/MatchParent"
+        android:background="@color/gray_porcelain"
+        android:orientation="vertical"
+        android:padding="@dimen/small">
+        <EditText
+            android:id="@+id/title_edit_text"
+            style="@style/InputEditText.Title"
+            android:hint="@string/title"/>
 
+        <EditText
+            android:id="@+id/content_edit_text"
+            style="@style/InputEditText.Content"
+            android:layout_marginTop="@dimen/small"
+            android:hint="@string/note"/>
+
+    </LinearLayout>
 </LinearLayout>
