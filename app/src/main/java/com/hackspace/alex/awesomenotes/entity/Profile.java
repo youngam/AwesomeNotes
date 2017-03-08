@@ -7,8 +7,10 @@ public class Profile extends Entity{
     public static final String FIRST_NAME = "firstName";
     public static final String LAST_NAME = "lastName";
     public static final String EMAIL = "email";
-    public static final String PASS = "password";
+    public static final String PASSWORD = "password";
     public static final String REGISTRATION_TIME = "registrationTime";
+    public static final String USER = "user";
+    public static final String USER_PROFILE = "userProfile";
 
     @SerializedName(FIRST_NAME)
     private String firstName;
@@ -19,7 +21,7 @@ public class Profile extends Entity{
     @SerializedName(EMAIL)
     private String email;
 
-    @SerializedName(PASS)
+    @SerializedName(PASSWORD)
     private String pass;
 
     public String getFirstName() {

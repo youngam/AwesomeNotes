@@ -114,6 +114,34 @@ public class NotesModel {
                 .singleOrError();
     }
 
+    public Single<Profile> signInUser(String email, String pass) {
+        JsonObject user = new JsonObject();
+        user.addProperty(Profile.EMAIL, email);
+        user.addProperty(Profile.PASSWORD, pass);
+        JsonObject request = GsonUtils.newJsonObject(Profile.USER, user);
+        String method = ServerApiMethod.SIGN_IN_USER.getMethodName();
+        Observable<JsonElement> response = shouldUseTestResponses? getTestResponse(method ,request) :
+                NOTES_API.signInUser(request);
+
+        return wrapAsync(convertToSingeEntity(response, Profile.class, Profile.USER_PROFILE))
+                .singleOrError();
+    }
+
+    public Single<Profile> signUpUser(String email, String firstName,
+                                      String lastNAme, String pass) {
+        JsonObject user = new JsonObject();
+        user.addProperty(Profile.EMAIL, email);
+        user.addProperty(Profile.PASSWORD, pass);
+        user.addProperty(Profile.FIRST_NAME, firstName);
+        user.addProperty(Profile.LAST_NAME, lastNAme);
+        JsonObject request = GsonUtils.newJsonObject(Profile.USER, user);
+        String method = ServerApiMethod.REGISTER_USER.getMethodName();
+        Observable<JsonElement> response = shouldUseTestResponses? getTestResponse(method ,request) :
+                NOTES_API.registerUser(request);
+
+        return wrapAsync(convertToSingeEntity(response, Profile.class, Profile.USER_PROFILE))
+                .singleOrError();
+    }
 
     private <T> Observable<T> wrapAsync(Observable<T> observable) {
         return observable.subscribeOn(Schedulers.io())

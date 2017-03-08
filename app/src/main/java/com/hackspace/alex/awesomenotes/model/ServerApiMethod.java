@@ -7,7 +7,7 @@ public enum ServerApiMethod {
     CREATE_NOTE("createNote"),
     DELETE_NOTE("deleteNote"),
     REGISTER_USER("registerUser"),
-    SIGN_IN("signIn"),
+    SIGN_IN_USER("signInUser"),
     ;
 
 

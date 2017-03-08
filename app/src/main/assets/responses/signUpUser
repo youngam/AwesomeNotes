@@ -1,0 +1,11 @@
+{
+	"ok": {
+		"userProfile": {
+			"_id": "58bc647e1061fd0a582f882b",
+            "firstName": "New User",
+            "lastName": "New Userov",
+            "email": "user@gmail.com",
+            "registrationTime": "27.06.2016T12.00.24Z"
+		}
+	}
+}
