@@ -11,37 +11,37 @@ import com.hackspace.alex.awesomenotes.entity.Note;
 import com.hackspace.alex.awesomenotes.model.NotesModel;
 import com.hackspace.alex.awesomenotes.view.INotesView;
 
-import io.reactivex.disposables.Disposable;
 import io.reactivex.observers.DisposableSingleObserver;
 
-public class NotesPresenter {
+public class NotesPresenter extends BasePresenter {
     private INotesView mNotesView;
-    private Disposable mDisposable;
-    private Note mNoteToDelete;
-    private Integer mNotePosition;
 
     @Inject
     NotesModel mNotesModel;
 
     public NotesPresenter(INotesView notesView) {
+        super(notesView);
         mNotesView = notesView;
         AwesomeNotes.getComponent().inject(this);
     }
 
     public void onInitView() {
-        readNotes();
+        readNotes(false);
     }
 
-    private void readNotes() {
+    private void readNotes(boolean isSwipeToRefresh) {
         String profileId = AuthManager.getUser().getId();
+        showProgress(isSwipeToRefresh);
         mNotesModel.readNotes(profileId).subscribe(new DisposableSingleObserver<Collection<Note>>() {
             @Override
             public void onSuccess(Collection<Note> value) {
+                hideProgress();
                 mNotesView.displayNotes(value);
             }
 
             @Override
             public void onError(Throwable e) {
+                hideProgress();
                 throw new RuntimeException(e);
             }
         });
@@ -56,7 +56,7 @@ public class NotesPresenter {
     }
 
     public void onNoteChanged() {
-        readNotes();
+        readNotes(false);
     }
 
     public void onItemDismiss(int position, Note note) {
@@ -87,5 +87,9 @@ public class NotesPresenter {
         return () ->
                 mNotesView.restoreNote(note, position);
 
+    }
+
+    public void onRefresh() {
+        readNotes(true);
     }
 }

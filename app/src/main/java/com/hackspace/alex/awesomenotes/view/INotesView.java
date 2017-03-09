@@ -5,8 +5,9 @@ import java.util.Collection;
 import android.support.annotation.Nullable;
 
 import com.hackspace.alex.awesomenotes.entity.Note;
+import com.hackspace.alex.worklibrary.view.IBaseView;
 
-public interface INotesView {
+public interface INotesView extends IBaseView{
     void displayNotes(Collection<Note> notes);
     void navigateToDetails(@Nullable String noteId);
 

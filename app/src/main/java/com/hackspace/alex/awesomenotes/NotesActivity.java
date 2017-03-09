@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
@@ -28,7 +29,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class NotesActivity extends SideMenuActivity implements INotesView, OnStartDragListener, ItemTouchHelperListener {
+public class NotesActivity extends SideMenuActivity implements INotesView,
+        OnStartDragListener, ItemTouchHelperListener, SwipeRefreshLayout.OnRefreshListener {
     public static final int CREATE_NOTE_REQUEST_CODE = 10005;
     public static final int UPDATE_NOTE_REQUEST_CODE = 10006;
     private NotesPresenter mNotesPresenter;
@@ -95,6 +97,7 @@ public class NotesActivity extends SideMenuActivity implements INotesView, OnSta
     }
 
     private void initView() {
+        initSwipeRefreshLayout(R.id.swipe_refresh_layout, this);
         mNotesAdapter = new NotesAdapter(mOnNoteClickListener);
         mNotesRecyclerView.setAdapter(mNotesAdapter);
 
@@ -134,5 +137,10 @@ public class NotesActivity extends SideMenuActivity implements INotesView, OnSta
     public void onItemDismiss(int position) {
         mNotesPresenter.onItemDismiss(position, mNotesAdapter.getItems().get(position));
         mNotesAdapter.onItemDismiss(position);
+    }
+
+    @Override
+    public void onRefresh() {
+        mNotesPresenter.onRefresh();
     }
 }

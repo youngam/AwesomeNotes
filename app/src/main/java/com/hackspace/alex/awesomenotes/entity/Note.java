@@ -6,6 +6,7 @@ import com.google.gson.annotations.SerializedName;
 
 public class Note extends Entity {
     public static final String TITLE = "title";
+    public static final String DATA = "data";
     public static final String NOTES = "notes";
     public static final String NOTE = "note";
     public static final String NOTE_ID = "noteId";

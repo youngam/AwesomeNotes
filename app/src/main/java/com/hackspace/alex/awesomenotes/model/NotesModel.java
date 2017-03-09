@@ -63,8 +63,10 @@ public class NotesModel {
 
     public Single<Note> readNote(String noteId, String profileId) {
         JsonObject request = new JsonObject();
-        request.addProperty(Profile.PROFILE_ID, profileId);
-        request.addProperty(Note.NOTE_ID, noteId);
+        JsonObject noteJson = new JsonObject();
+        noteJson.addProperty(Profile.PROFILE_ID, profileId);
+        noteJson.addProperty(Note.ID, noteId);
+        request.add(Note.NOTE, GsonUtils.newJsonObject(FILTER, noteJson));
 
         String method = ServerApiMethod.READ_NOTE.getMethodName();
         Observable<JsonElement> response = shouldUseTestResponses? getTestResponse(method ,request) :
@@ -94,9 +96,10 @@ public class NotesModel {
         JsonObject filter = GsonUtils.newJsonObject(ID, noteId);
 
         JsonObject request = new JsonObject();
-        request.add(Note.NOTE, noteJson);
+        request.add(Note.DATA, noteJson);
         request.add(FILTER, filter);
 
+        request = GsonUtils.newJsonObject(Note.NOTE, request);
         String method = ServerApiMethod.UPDATE_NOTE.getMethodName();
         Observable<JsonElement> response = shouldUseTestResponses? getTestResponse(method ,request) :
                 NOTES_API.updateNote(request);
