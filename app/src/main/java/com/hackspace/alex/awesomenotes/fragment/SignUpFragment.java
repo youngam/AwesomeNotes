@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.hackspace.alex.awesomenotes.R;
 import com.hackspace.alex.awesomenotes.activity.INavigationActivity;
@@ -49,5 +50,9 @@ public class SignUpFragment extends Fragment implements ISignUpView {
     @Override
     public void navigateToSignInScreen(String email) {
         ((INavigationActivity)getActivity()).navigateTo(SignInFragment.newInstance(email));
+    }
+
+    public void showToast(String title) {
+        Toast.makeText(getActivity(), title, Toast.LENGTH_SHORT).show();
     }
 }

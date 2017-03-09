@@ -21,7 +21,6 @@ public class SignUpPresenter {
 
     public void onSignUpClick(String firstName, String lastName,
                               String email, String pass, String passConfirm) {
-//        String md5Pass = PassEncoder.getMd5(pass);
         mNotesModel.signUpUser(email, firstName, lastName, pass, passConfirm)
                 .subscribe(new DisposableSingleObserver<Profile>() {
                     @Override
@@ -32,8 +31,8 @@ public class SignUpPresenter {
 
                     @Override
                     public void onError(Throwable e) {
-                        //TODO show error
-                        throw new RuntimeException(e);
+                        mSignUpView.showToast("Can't signUp");
+                        e.printStackTrace();
                     }
                 });
     }

@@ -67,7 +67,8 @@ public class NoteDetailsPresenter {
 
             @Override
             public void onError(Throwable e) {
-                throw new RuntimeException(e);
+                mNotesView.showToast("Error during communication with server");
+                e.printStackTrace();
             }
         };
     }

@@ -42,7 +42,8 @@ public class NotesPresenter extends BasePresenter {
             @Override
             public void onError(Throwable e) {
                 hideProgress();
-                throw new RuntimeException(e);
+                mNotesView.showToast("Error during readNotes");
+                e.printStackTrace();
             }
         });
     }

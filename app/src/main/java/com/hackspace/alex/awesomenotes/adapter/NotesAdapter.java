@@ -2,6 +2,7 @@ package com.hackspace.alex.awesomenotes.adapter;
 
 import java.util.Collections;
 
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
@@ -66,6 +67,8 @@ public class NotesAdapter extends BaseRecyclerAdapter<Note,NotesAdapter.NoteView
         void setContent(Note note) {
             mNoteTitleTextView.setText(note.getTitle());
             mContentTitleTextView.setText(note.getContent());
+            int resid = Color.parseColor(note.getColorHex());
+            itemView.setBackgroundColor(resid);
         }
 
         @Override

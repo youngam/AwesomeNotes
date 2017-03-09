@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.hackspace.alex.awesomenotes.R;
 import com.hackspace.alex.awesomenotes.activity.INavigationActivity;
@@ -64,5 +65,10 @@ public class SignInFragment extends Fragment implements ISignInView{
     @Override
     public void navigateToNotesScreen() {
         startActivity(new Intent(getActivity(), Screen.NOTES.getScreen()));
+    }
+
+    @Override
+    public void showToast(String title) {
+        Toast.makeText(getActivity(), title, Toast.LENGTH_SHORT).show();
     }
 }

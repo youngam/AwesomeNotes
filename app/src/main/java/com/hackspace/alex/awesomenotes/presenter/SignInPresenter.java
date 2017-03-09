@@ -33,8 +33,8 @@ public class SignInPresenter {
 
                     @Override
                     public void onError(Throwable e) {
-                        //TODO show error
-                        throw new RuntimeException(e);
+                        mSignInView.showToast("Can't signIn");
+                        e.printStackTrace();
                     }
                 });
     }

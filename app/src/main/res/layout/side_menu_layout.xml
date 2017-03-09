@@ -18,7 +18,7 @@
             />
     </RelativeLayout>
 
-    <android.support.percent.PercentFrameLayout
+    <android.support.percent.PercentRelativeLayout
         android:id="@+id/left_drawer"
         style="@style/FullHeight"
         android:layout_gravity="start"
@@ -61,6 +61,15 @@
                 app:text2="@string/settings_hint"/>
 
         </LinearLayout>
-    </android.support.percent.PercentFrameLayout>
+
+        <com.hackspace.alex.worklibrary.ui.widget.TextTextView
+            android:id="@+id/log_out_ttext_view"
+            style="@style/SideMenuElement"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/normal"
+            app:text1="@string/ico_ion_log_out"
+            app:text2="@string/log_out_hint"/>
+    </android.support.percent.PercentRelativeLayout>
 
 </android.support.v4.widget.DrawerLayout>

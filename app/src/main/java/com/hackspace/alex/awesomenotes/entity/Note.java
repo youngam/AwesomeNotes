@@ -11,7 +11,7 @@ public class Note extends Entity {
     public static final String NOTE = "note";
     public static final String NOTE_ID = "noteId";
     public static final String CONTENT = "content";
-    public static final String COLOR_NAME = "colorName";
+    public static final String COLOR_HEX = "colorHex";
     public static final String IMAGE = "image";
     public static final String CREATION_TIME = "creationTime";
     public static final String DELETION_TIME = "deletionTime";
@@ -25,8 +25,8 @@ public class Note extends Entity {
     @SerializedName(CONTENT)
     private String content;
 
-    @SerializedName(COLOR_NAME)
-    private String colorName;
+    @SerializedName(COLOR_HEX)
+    private String colorHex;
 
     @SerializedName(IMAGE)
     private String image;
@@ -55,8 +55,8 @@ public class Note extends Entity {
         return content;
     }
 
-    public String getColorName() {
-        return colorName;
+    public String getColorHex() {
+        return colorHex;
     }
 
     public String getImage() {
@@ -99,7 +99,7 @@ public class Note extends Entity {
         if (isInTrash != note.isInTrash) return false;
         if (title != null ? !title.equals(note.title) : note.title != null) return false;
         if (content != null ? !content.equals(note.content) : note.content != null) return false;
-        if (colorName != null ? !colorName.equals(note.colorName) : note.colorName != null)
+        if (colorHex != null ? !colorHex.equals(note.colorHex) : note.colorHex != null)
             return false;
         if (image != null ? !image.equals(note.image) : note.image != null) return false;
         if (creationTime != null ? !creationTime.equals(note.creationTime) : note.creationTime != null)
@@ -116,7 +116,7 @@ public class Note extends Entity {
         int result = super.hashCode();
         result = 31 * result + (title != null ? title.hashCode() : 0);
         result = 31 * result + (content != null ? content.hashCode() : 0);
-        result = 31 * result + (colorName != null ? colorName.hashCode() : 0);
+        result = 31 * result + (colorHex != null ? colorHex.hashCode() : 0);
         result = 31 * result + (image != null ? image.hashCode() : 0);
         result = 31 * result + (creationTime != null ? creationTime.hashCode() : 0);
         result = 31 * result + (deletionTime != null ? deletionTime.hashCode() : 0);
