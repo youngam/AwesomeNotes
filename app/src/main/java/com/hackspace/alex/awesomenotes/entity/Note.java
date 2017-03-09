@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Note extends Entity{
+public class Note extends Entity {
     public static final String TITLE = "title";
     public static final String NOTES = "notes";
     public static final String NOTE = "note";
@@ -80,6 +80,10 @@ public class Note extends Entity{
 
     public boolean isInTrash() {
         return isInTrash;
+    }
+
+    public String getId() {
+        return id;
     }
 
     @Override

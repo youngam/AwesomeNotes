@@ -15,6 +15,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.internal.bind.TypeAdapters;
 import com.hackspace.alex.awesomenotes.AwesomeNotes;
+import com.hackspace.alex.awesomenotes.entity.Entity;
 import com.hackspace.alex.awesomenotes.entity.Note;
 import com.hackspace.alex.awesomenotes.entity.Profile;
 import com.hackspace.alex.worklibrary.utils.GsonUtils;
@@ -30,9 +31,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class NotesModel {
-    public static NotesModel sInstance;
-
-    private boolean shouldUseTestResponses = true;
+    private boolean shouldUseTestResponses = false;
 
     private HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor()
             .setLevel(HttpLoggingInterceptor.Level.BODY);
@@ -51,9 +50,9 @@ public class NotesModel {
                 .create(NotesServerApi.class);
     }
 
-    public Single<Collection<Note>> readNotes(Long profileId) {
-        JsonObject request = new JsonObject();
-        request.addProperty(Profile.PROFILE_ID, profileId);
+    public Single<Collection<Note>> readNotes(String profileId) {
+        JsonObject request = GsonUtils.newJsonObject(Arrays.asList(Note.NOTES, FILTER,
+                Profile.PROFILE_ID), profileId);
 
         String method = ServerApiMethod.READ_NOTES.getMethodName();
         Observable<JsonElement> response = shouldUseTestResponses? getTestResponse(method ,request) :
@@ -62,19 +61,19 @@ public class NotesModel {
                 .singleOrError();
     }
 
-    public Single<Note> readNote(String noteId, Long profileId) {
+    public Single<Note> readNote(String noteId, String profileId) {
         JsonObject request = new JsonObject();
         request.addProperty(Profile.PROFILE_ID, profileId);
         request.addProperty(Note.NOTE_ID, noteId);
 
         String method = ServerApiMethod.READ_NOTE.getMethodName();
         Observable<JsonElement> response = shouldUseTestResponses? getTestResponse(method ,request) :
-                NOTES_API.readNotes(request);
+                NOTES_API.readNote(request);
         return wrapAsync(convertToSingeEntity(response, Note.class, Note.NOTE))
                 .singleOrError();
     }
 
-    public Single<Note> createNote(Long profileId, String title, String content) {
+    public Single<Note> createNote(String profileId, String title, String content) {
         JsonObject noteJson = new JsonObject();
         noteJson.addProperty(Note.TITLE, title);
         noteJson.addProperty(Note.CONTENT, content);
@@ -106,7 +105,8 @@ public class NotesModel {
     }
 
     public Single<Note> deleteNote(String id) {
-        JsonObject request = GsonUtils.newJsonObject(Arrays.asList(Note.NOTE, FILTER, ID), id);
+                                                                                //TODO change to norm id
+        JsonObject request = GsonUtils.newJsonObject(Arrays.asList(Note.NOTE, FILTER, Entity.ID), id);
         String method = ServerApiMethod.DELETE_NOTE.getMethodName();
         Observable<JsonElement> response = shouldUseTestResponses? getTestResponse(method ,request) :
                 NOTES_API.deleteNote(request);
@@ -123,23 +123,24 @@ public class NotesModel {
         Observable<JsonElement> response = shouldUseTestResponses? getTestResponse(method ,request) :
                 NOTES_API.signInUser(request);
 
-        return wrapAsync(convertToSingeEntity(response, Profile.class, Profile.USER_PROFILE))
+        return wrapAsync(convertToSingeEntity(response, Profile.class, Profile.USER))
                 .singleOrError();
     }
 
     public Single<Profile> signUpUser(String email, String firstName,
-                                      String lastNAme, String pass) {
+                                      String lastName, String pass, String passConfirmation) {
         JsonObject user = new JsonObject();
         user.addProperty(Profile.EMAIL, email);
         user.addProperty(Profile.PASSWORD, pass);
+        user.addProperty(Profile.CONFIRMATION, passConfirmation);
         user.addProperty(Profile.FIRST_NAME, firstName);
-        user.addProperty(Profile.LAST_NAME, lastNAme);
+        user.addProperty(Profile.LAST_NAME, lastName);
         JsonObject request = GsonUtils.newJsonObject(Profile.USER, user);
         String method = ServerApiMethod.REGISTER_USER.getMethodName();
         Observable<JsonElement> response = shouldUseTestResponses? getTestResponse(method ,request) :
                 NOTES_API.registerUser(request);
 
-        return wrapAsync(convertToSingeEntity(response, Profile.class, Profile.USER_PROFILE))
+        return wrapAsync(convertToSingeEntity(response, Profile.class, Profile.USER))
                 .singleOrError();
     }
 

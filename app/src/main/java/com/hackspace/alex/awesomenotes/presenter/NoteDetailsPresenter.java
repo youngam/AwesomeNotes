@@ -3,6 +3,7 @@ package com.hackspace.alex.awesomenotes.presenter;
 import javax.inject.Inject;
 
 import com.hackspace.alex.awesomenotes.AwesomeNotes;
+import com.hackspace.alex.awesomenotes.auth.AuthManager;
 import com.hackspace.alex.awesomenotes.entity.Note;
 import com.hackspace.alex.awesomenotes.model.NotesModel;
 import com.hackspace.alex.awesomenotes.utils.INoteDetailsView;
@@ -24,8 +25,7 @@ public class NoteDetailsPresenter {
     public void onInitView(String noteId) {
         if (noteId != null) {
             mNoteId = noteId;
-            //TODO add reference to AuthModel.currentUserId
-            Long profileId = 1L;
+            String profileId = AuthManager.getUser().getId();
             mNotesModel.readNote(noteId, profileId).subscribe(new DisposableSingleObserver<Note>() {
                 @Override
                 public void onSuccess(Note value) {
@@ -48,8 +48,7 @@ public class NoteDetailsPresenter {
     }
 
     private void createNote(String title, String content) {
-        //TODO add reference to AuthModel.currentUserId
-        Long profileId = 1L;
+        String profileId = AuthManager.getUser().getId();
         mNotesModel.createNote(profileId, title, content)
                 .subscribe(getNavigateObserver());
     }

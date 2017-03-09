@@ -3,11 +3,13 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/hackspace/alex/awesomenotes/activity/Screen.java" charset="windows-1251" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/hackspace/alex/awesomenotes/activity/SideMenuActivity.java" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/hackspace/alex/awesomenotes/auth/AuthPreference.java" charset="windows-1251" />
     <file url="file://$PROJECT_DIR$/app/src/main/res/drawable-v21/gray_side_menu_item_gfx.xml" charset="windows-1251" />
     <file url="file://$PROJECT_DIR$/app/src/main/res/drawable-v21/gray_side_menu_item_selected_gfx.xml" charset="windows-1251" />
     <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/gray_side_menu_item_gfx.xml" charset="windows-1251" />
     <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/gray_side_menu_item_selected_gfx.xml" charset="windows-1251" />
     <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_add_white.png" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/worklibrary/src/main/java/com/hackspace/alex/worklibrary/preferences/BasePreferences.java" charset="windows-1251" />
     <file url="file://$PROJECT_DIR$/worklibrary/src/main/java/com/hackspace/alex/worklibrary/ui/listener/OnEndlessScrollListener.java" charset="windows-1251" />
     <file url="PROJECT" charset="UTF-8" />
   </component>

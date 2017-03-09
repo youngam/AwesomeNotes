@@ -57,6 +57,7 @@ public class SignInFragment extends Fragment implements ISignInView{
         }
 
         mSignInPresenter = new SignInPresenter(this);
+        mSignInPresenter.onInitView();
         return view;
     }
 

@@ -8,7 +8,7 @@
     <string name="undo">UNDO</string>
     <string name="cant_delete_note">Can\'t delete note</string>
     <string name="login_hint">Login</string>
-    <string name="email_hint">Email</string>
+    <string name="email_hint">email@gmail.com</string>
     <string name="first_name_hint">First name</string>
     <string name="last_name_hint">Last name</string>
     <string name="password_hint">Password</string>

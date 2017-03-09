@@ -23,13 +23,14 @@ public class SignUpFragment extends Fragment implements ISignUpView {
     @BindView(R.id.last_name_edit_text) EditText mLastNameEditText;
     @BindView(R.id.email_edit_text) EditText mEmailEditText;
     @BindView(R.id.pass_edit_text) EditText mPasswordEditText;
+    @BindView(R.id.pass_confirm_edit_text) EditText mPasswordConfirmEditText;
     private SignUpPresenter mSignUpPresenter;
 
 
     @OnClick(R.id.sign_up_button)
     void onSignUpClick() {
         mSignUpPresenter.onSignUpClick(getText(mFirstNameEditText), getText(mLastNameEditText),
-                getText(mEmailEditText), getText(mPasswordEditText));
+                getText(mEmailEditText), getText(mPasswordEditText), getText(mPasswordConfirmEditText));
     }
 
     private String getText(EditText editText) {

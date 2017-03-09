@@ -8,6 +8,7 @@ public class Profile extends Entity{
     public static final String LAST_NAME = "lastName";
     public static final String EMAIL = "email";
     public static final String PASSWORD = "password";
+    public static final String CONFIRMATION = "confirmation";
     public static final String REGISTRATION_TIME = "registrationTime";
     public static final String USER = "user";
     public static final String USER_PROFILE = "userProfile";

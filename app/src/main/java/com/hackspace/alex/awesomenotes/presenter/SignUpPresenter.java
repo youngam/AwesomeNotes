@@ -5,7 +5,6 @@ import javax.inject.Inject;
 import com.hackspace.alex.awesomenotes.AwesomeNotes;
 import com.hackspace.alex.awesomenotes.entity.Profile;
 import com.hackspace.alex.awesomenotes.model.NotesModel;
-import com.hackspace.alex.awesomenotes.utils.PassEncoder;
 import com.hackspace.alex.awesomenotes.view.ISignUpView;
 
 import io.reactivex.observers.DisposableSingleObserver;
@@ -21,9 +20,9 @@ public class SignUpPresenter {
     }
 
     public void onSignUpClick(String firstName, String lastName,
-                              String email, String pass) {
-        String md5Pass = PassEncoder.getMd5(pass);
-        mNotesModel.signUpUser(firstName, lastName, email, md5Pass)
+                              String email, String pass, String passConfirm) {
+//        String md5Pass = PassEncoder.getMd5(pass);
+        mNotesModel.signUpUser(email, firstName, lastName, pass, passConfirm)
                 .subscribe(new DisposableSingleObserver<Profile>() {
                     @Override
                     public void onSuccess(Profile value) {

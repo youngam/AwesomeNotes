@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import com.hackspace.alex.awesomenotes.AwesomeNotes;
 import com.hackspace.alex.awesomenotes.R;
+import com.hackspace.alex.awesomenotes.auth.AuthManager;
 import com.hackspace.alex.awesomenotes.entity.Note;
 import com.hackspace.alex.awesomenotes.model.NotesModel;
 import com.hackspace.alex.awesomenotes.view.INotesView;
@@ -32,8 +33,7 @@ public class NotesPresenter {
     }
 
     private void readNotes() {
-        //TODO add reference to AuthModel.currentUserId
-        Long profileId = 1L;
+        String profileId = AuthManager.getUser().getId();
         mNotesModel.readNotes(profileId).subscribe(new DisposableSingleObserver<Collection<Note>>() {
             @Override
             public void onSuccess(Collection<Note> value) {
