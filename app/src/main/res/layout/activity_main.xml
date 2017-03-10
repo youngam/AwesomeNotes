@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/coordinator_layout"
     style="@style/MatchParent"
-    android:background="@color/gray_porcelain">
+    android:background="@color/background">
 
     <include style="@style/FullWidth"
              layout="@layout/toolbar_layout"/>

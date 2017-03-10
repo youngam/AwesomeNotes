@@ -3,7 +3,7 @@
               xmlns:tools="http://schemas.android.com/tools"
               android:orientation="vertical"
               android:padding="@dimen/small"
-              android:background="@color/white"
+              android:background="@color/primary_background"
               android:elevation="2dp"
               android:layout_marginBottom="@dimen/small"
               tools:ignore="MissingPrefix"
@@ -12,14 +12,12 @@
     <TextView
         android:id="@+id/note_title_text_view"
         android:textSize="20sp"
-        android:textColor="@color/black"
         fontPath="fonts/roboto_medium.ttf"
         style="@style/WrapContent"/>
 
     <TextView
         android:id="@+id/note_content_text_view"
         android:textSize="18sp"
-        android:textColor="@color/black"
         android:layout_marginTop="@dimen/small"
         fontPath="fonts/roboto_light.ttf"
         style="@style/WrapContent"/>

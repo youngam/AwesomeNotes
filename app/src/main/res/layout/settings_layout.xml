@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                style="@style/MatchParent"
+                android:orientation="vertical"
+                android:padding="@dimen/small"
+                tools:ignore="MissingPrefix">
+
+
+    <TextView
+        android:text="@string/dark_theme"
+        style="@style/WrapContent"/>
+
+    <Switch
+        android:id="@+id/night_mode_switch"
+        style="@style/WrapContent"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"/>
+</RelativeLayout>

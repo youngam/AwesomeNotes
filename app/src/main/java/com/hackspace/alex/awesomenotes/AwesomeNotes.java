@@ -1,5 +1,7 @@
 package com.hackspace.alex.awesomenotes;
 
+import android.support.v7.app.AppCompatDelegate;
+
 import com.hackspace.alex.awesomenotes.di.component.AppComponent;
 import com.hackspace.alex.awesomenotes.di.component.DaggerAppComponent;
 import com.hackspace.alex.worklibrary.BaseApplication;
@@ -10,6 +12,10 @@ import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 public class AwesomeNotes extends BaseApplication {
     private static AppComponent sComponent;
     private static AwesomeNotes sInstance;
+
+    static {
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+    }
 
     public static AppComponent getComponent() {
         return sComponent;
@@ -33,5 +39,14 @@ public class AwesomeNotes extends BaseApplication {
 
     public static AwesomeNotes getInstance() {
         return sInstance;
+    }
+
+    public void setNightMode(boolean nightMode) {
+        int mode = nightMode ? AppCompatDelegate.MODE_NIGHT_YES : AppCompatDelegate.MODE_NIGHT_NO;
+        AppCompatDelegate.setDefaultNightMode(mode);
+    }
+
+    public boolean isNightMode() {
+        return AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES;
     }
 }

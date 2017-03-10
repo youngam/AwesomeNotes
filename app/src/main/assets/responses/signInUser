@@ -1,6 +1,6 @@
 {
 	"ok": {
-		"userProfile": {
+		"user": {
 			"_id": "58bc647e1061fd0a582f882b",
             "firstName": "user",
             "lastName": "userov",

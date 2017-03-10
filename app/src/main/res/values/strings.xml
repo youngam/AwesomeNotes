@@ -15,4 +15,5 @@
     <string name="password_hint">Password</string>
     <string name="sign_in_hint">Sign In</string>
     <string name="sign_up_hint">Sign Up</string>
+    <string name="dark_theme">Dark Theme</string>
 </resources>

@@ -31,7 +31,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class NotesModel {
-    private boolean shouldUseTestResponses = false;
+    private boolean shouldUseTestResponses = true;
 
     private HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor()
             .setLevel(HttpLoggingInterceptor.Level.BODY);

@@ -10,7 +10,7 @@
 
     <LinearLayout
         style="@style/MatchParent"
-        android:background="@color/gray_porcelain"
+        android:background="@color/background"
         android:orientation="vertical"
         android:padding="@dimen/small">
         <EditText

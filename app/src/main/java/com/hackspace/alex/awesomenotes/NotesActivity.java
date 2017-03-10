@@ -43,7 +43,25 @@ public class NotesActivity extends SideMenuActivity implements INotesView,
     private NotesAdapter mNotesAdapter;
     private OnItemClickListener<Note> mOnNoteClickListener = entity -> {
         mNotesPresenter.onNoteClick(entity);
-        Toast.makeText(NotesActivity.this, entity.getTitle(), Toast.LENGTH_SHORT).show();
+
+/*        final ColorPicker colorPicker = new ColorPicker(NotesActivity.this);
+        colorPicker.setOnChooseColorListener(new ColorPicker.OnChooseColorListener() {
+            @Override
+            public void onChooseColor(int position,int color) {
+                // put code
+            }
+
+            @Override
+            public void onCancel(){
+                // put code
+            }
+        }).addListenerButton("Yes", (v, position, color) -> {
+            // put code
+        }).disableDefaultButtons(true)
+                .setDefaultColorButton(Color.parseColor("#f84c44"))
+                .setRoundColorButton(true)
+                .setTitle("Choose color please")
+                .show();*/
     };
 
     @OnClick(value = R.id.add_note_fab)

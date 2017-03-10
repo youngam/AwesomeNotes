@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.annimon.stream.Stream;
 import com.hackspace.alex.awesomenotes.R;
+import com.hackspace.alex.awesomenotes.SettingsActivity;
 import com.hackspace.alex.awesomenotes.presenter.SideMenuPresenter;
 import com.hackspace.alex.awesomenotes.view.ISideMenuView;
 import com.hackspace.alex.worklibrary.activity.BaseAppCompatActivity;
@@ -32,6 +33,7 @@ public class SideMenuActivity extends BaseAppCompatActivity implements ISideMenu
     @BindView(R.id.left_drawer)PercentRelativeLayout mSideMenuDrawer;
     @BindView(R.id.notes_screen_ttext_view) TextTextView mNotesScreenTtextView;
     @BindView(R.id.log_out_ttext_view) TextTextView mLogOutTtextView;
+    @BindView(R.id.settings_ttext_view) TextTextView mSettingsTtextView;
     @BindView(R.id.toolbar) protected Toolbar mToolbar;
     @BindView(R.id.progress_bar) ProgressBar mProgressBar;
     private ViewStub mViewStub;
@@ -102,7 +104,7 @@ public class SideMenuActivity extends BaseAppCompatActivity implements ISideMenu
         DrawerItemClickListener drawerItemClickListener = new DrawerItemClickListener();
         mBaseDrawerLayout.addDrawerListener(mDrawerToggle);
 
-        Stream.of(mNotesScreenTtextView, mLogOutTtextView)
+        Stream.of(mNotesScreenTtextView, mLogOutTtextView, mSettingsTtextView)
                 .forEach(v -> v.setOnClickListener(drawerItemClickListener));
     }
 
@@ -135,6 +137,11 @@ public class SideMenuActivity extends BaseAppCompatActivity implements ISideMenu
 
             case R.id.log_out_ttext_view:
                 mSideMenuPresenter.onLogoutClick();
+
+                break;
+
+            case R.id.settings_ttext_view:
+                startActivity(new Intent(this, SettingsActivity.class));
 
                 break;
 

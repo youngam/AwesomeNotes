@@ -27,7 +27,7 @@
 
         <LinearLayout
             style="@style/FullHeight"
-            android:background="@color/white"
+            android:background="@color/background"
             android:orientation="vertical"
             app:layout_widthPercent="100%">
 
@@ -55,7 +55,7 @@
             style="@style/Divider"/>
 
             <com.hackspace.alex.worklibrary.ui.widget.TextTextView
-                android:id="@+id/settings"
+                android:id="@+id/settings_ttext_view"
                 style="@style/SideMenuElement"
                 app:text1="@string/ico_ion_settings"
                 app:text2="@string/settings_hint"/>
